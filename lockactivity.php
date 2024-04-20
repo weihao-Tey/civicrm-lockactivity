@@ -276,7 +276,7 @@ function lockactivity_civicrm_alterTemplateFile($formName, &$form, $context, &$t
  */
 function lockactivity_civicrm_navigationMenu(&$menu) {
   _lockactivity_civix_insert_navigation_menu($menu, 'Administer/System Settings', array(
-    'label' => ts('Lock Activity Settings'),
+    'label' => ts('Activity Lock Settings'),
     'name' => 'lock_activity',
     'url' => 'civicrm/lockactivitysettings?reset=1',
     'permission' => 'administer CiviCRM',
