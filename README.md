@@ -1,12 +1,12 @@
 # lockactivity
-(*FIXME: In one or two paragraphs, describe what the extension does and why one would download it. *)
+![image](https://github.com/weihao-Tey/civicrm-lockactivity/assets/142696206/d8b43937-c966-49ee-92df-733d60de2f40)
+
+This CiviCRM extension creates a new "Locked" Activity status, which locks an activity for user in CiviCRM.
+
+![image](https://github.com/weihao-Tey/civicrm-lockactivity/assets/142696206/d73804b8-3fce-4c8b-9a42-74b9e3df126f)
+
+With this extension, you are able to specify all the users that are able to Lock and Unlock Activity in CiviCRM. 
+
+[Administer >> System Settings >> Activity Lock Settings]
 
 This is an [extension for CiviCRM](https://docs.civicrm.org/sysadmin/en/latest/customize/extensions/), licensed under [AGPL-3.0](LICENSE.txt).
-
-## Getting Started
-
-(* FIXME: Where would a new user navigate to get started? What changes would they see? *)
-
-## Known Issues
-
-(* FIXME *)
