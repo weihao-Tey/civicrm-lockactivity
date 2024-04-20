@@ -67,16 +67,16 @@ class CRM_Lockactivity_Form_Lockactivitysettings extends CRM_Core_Form {
 
     $postedVals['selected_roles'] = $values['selected_roles'];
 
-    $checkFields = [
-      'selected_roles' => 'Role',
-    ];
+    // $checkFields = [
+    //   'selected_roles' => 'Role',
+    // ];
 
-    foreach ($postedVals as $key => $value) {
-      if (in_array($key, array_keys($checkFields)) && $value == null) {
-        CRM_Core_Session::setStatus("\"".$checkFields[$key]."\" field is required", ts('Empty field'), 'warning', array('expires' => 5000));
-        return;
-      }
-    }
+    // foreach ($postedVals as $key => $value) {
+    //   if (in_array($key, array_keys($checkFields)) && $value == null) {
+    //     CRM_Core_Session::setStatus("\"".$checkFields[$key]."\" field is required", ts('Empty field'), 'warning', array('expires' => 5000));
+    //     return;
+    //   }
+    // }
 
     $sql =  "TRUNCATE TABLE civicrm_lockactivitysettings";
     CRM_Core_DAO::executeQuery($sql, CRM_Core_DAO::$_nullArray);
