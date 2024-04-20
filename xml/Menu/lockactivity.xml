@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<menu>
+  <item>
+    <path>civicrm/lockactivitysettings</path>
+    <page_callback>CRM_Lockactivity_Form_Lockactivitysettings</page_callback>
+    <title>Lockactivitysettings</title>
+    <access_arguments>access CiviCRM</access_arguments>
+  </item>
+</menu>
