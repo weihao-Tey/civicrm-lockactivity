@@ -134,9 +134,6 @@ function lockactivity_civicrm_buildForm($formName, &$form) {
   $settings = getSettings();
   $settingArray = explode(",", $settings['selected_roles']);
 
-  civi::log()->info(print_r($settingArray, true));
-  civi::log()->info(implode(",",$settings));
-
   // Check if the form is for editing an activity
   if ($formName == 'CRM_Activity_Form_Activity' && !in_array($role, $settingArray) || $formName == 'CRM_Case_Form_Activity' && !in_array($role, $settingArray)) {
     // Access the status_id element directly
