@@ -148,10 +148,6 @@ function lockactivity_civicrm_buildForm($formName, &$form) {
         unset($element->_options[$index]);
         // Re-index the options array after removal
         $element->_options = array_values($element->_options);
-        // Remove the status_id value if it's "Locked"
-        if ($element->_values[0] == $index + 1) {
-            $element->_values = array();
-        }
         break;
       }
     }
