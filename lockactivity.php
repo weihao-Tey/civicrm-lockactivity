@@ -104,7 +104,21 @@ function getSettings(){
       $settings[$result->param_name] = $result->param_value;
   }
 
-  return $settings ? $settings : ['selected_roles' => 'administrator'];
+  // Add the administrator role to the 'selected_roles' setting
+  if (!isset($settings['selected_roles'])) {
+    // If 'selected_roles' setting does not exist, set it to 'administrator'
+    $settings['selected_roles'] = 'administrator';
+  } 
+  else {
+    // If 'selected_roles' setting exists, ensure that 'administrator' is included
+    $selectedRoles = explode(",", $settings['selected_roles']);
+    if (!in_array('administrator', $selectedRoles)) {
+        $selectedRoles[] = 'administrator';
+        $settings['selected_roles'] = implode(",", $selectedRoles);
+    }
+  }
+
+  return $settings;
 }
 
 /**
@@ -119,6 +133,9 @@ function lockactivity_civicrm_buildForm($formName, &$form) {
   $role = getCurrentUserRole();
   $settings = getSettings();
   $settingArray = explode(",", $settings['selected_roles']);
+
+  civi::log()->info(print_r($settingArray, true));
+  civi::log()->info(implode(",",$settings));
 
   // Check if the form is for editing an activity
   if ($formName == 'CRM_Activity_Form_Activity' && !in_array($role, $settingArray) || $formName == 'CRM_Case_Form_Activity' && !in_array($role, $settingArray)) {
@@ -276,7 +293,7 @@ function lockactivity_civicrm_alterTemplateFile($formName, &$form, $context, &$t
  */
 function lockactivity_civicrm_navigationMenu(&$menu) {
   _lockactivity_civix_insert_navigation_menu($menu, 'Administer/System Settings', array(
-    'label' => ts('Activity Lock Settings'),
+    'label' => ts('Lock Activity Settings'),
     'name' => 'lock_activity',
     'url' => 'civicrm/lockactivitysettings?reset=1',
     'permission' => 'administer CiviCRM',
