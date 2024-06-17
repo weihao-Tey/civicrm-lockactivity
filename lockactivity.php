@@ -279,11 +279,15 @@ function lockactivity_civicrm_alterTemplateFile($formName, &$form, $context, &$t
   }
   if ($formName == 'CRM_Activity_Page_Tab'){
 
+    $Activity_Selector_DIR = __DIR__ . '/templates' . DIRECTORY_SEPARATOR . 'CRM' . DIRECTORY_SEPARATOR . 'Activity' . DIRECTORY_SEPARATOR . 'Selector.tpl';
+
+    CRM_Core_Smarty::singleton()->assign('Activity_Selector_DIR', $Activity_Selector_DIR);
+    
     // Get the path to the extension's templates/CRM/Activity directory
     $extDir = __DIR__ . '/templates' . DIRECTORY_SEPARATOR . 'CRM' . DIRECTORY_SEPARATOR . 'Activity';
               
     // Set the relative path to the Activity.tpl file
-    $relativePath = 'Selector.tpl';
+    $relativePath = 'ActivityTab.tpl';
 
     // Combine the extension's templates directory path with the relative path
     $tplName = $extDir . DIRECTORY_SEPARATOR . $relativePath;
