@@ -209,7 +209,7 @@ function lockactivity_civicrm_links($op, $objectName, $objectId, &$links, &$mask
  * @param string $tplName (reference) change this if required to the altered tpl file
  */
 function lockactivity_civicrm_alterTemplateFile($formName, &$form, $context, &$tplName) {
-  
+
   if ($formName == 'CRM_Activity_Form_Activity' && $form->getAction() == CRM_Core_Action::VIEW) {
 
   $role = getCurrentUserRole();
@@ -267,7 +267,7 @@ function lockactivity_civicrm_alterTemplateFile($formName, &$form, $context, &$t
     $statusid = $optionValue['value'];
 
     if($activityStatus == $statusid){
-      // Get the path to the extension's templates/activity directory
+      // Get the path to the extension's templates/Activity directory
       $extDir = __DIR__ . '/templates' . DIRECTORY_SEPARATOR . 'Activity';
               
       // Set the relative path to the Activity.tpl file
@@ -276,6 +276,36 @@ function lockactivity_civicrm_alterTemplateFile($formName, &$form, $context, &$t
       // Combine the extension's templates directory path with the relative path
       $tplName = $extDir . DIRECTORY_SEPARATOR . $relativePath;
     }
+  }
+  if ($formName == 'CRM_Activity_Page_Tab'){
+
+    // Get the path to the extension's templates/CRM/Activity directory
+    $extDir = __DIR__ . '/templates' . DIRECTORY_SEPARATOR . 'CRM' . DIRECTORY_SEPARATOR . 'Activity';
+              
+    // Set the relative path to the Activity.tpl file
+    $relativePath = 'Selector.tpl';
+
+    // Combine the extension's templates directory path with the relative path
+    $tplName = $extDir . DIRECTORY_SEPARATOR . $relativePath;
+  }
+  if ($formName == 'CRM_Case_Page_Tab'){
+
+    $activityTab_DIR = __DIR__ . '/templates' . DIRECTORY_SEPARATOR . 'CRM' . DIRECTORY_SEPARATOR . 'Case' . DIRECTORY_SEPARATOR . 'Form' . DIRECTORY_SEPARATOR . 'ActivityTab.tpl';
+
+    CRM_Core_Smarty::singleton()->assign('activityTab_DIR', $activityTab_DIR);
+
+    $CaseView_DIR = __DIR__ . '/templates' . DIRECTORY_SEPARATOR . 'CRM' . DIRECTORY_SEPARATOR . 'Case' . DIRECTORY_SEPARATOR . 'Form' . DIRECTORY_SEPARATOR . 'CaseView.tpl';
+    
+    CRM_Core_Smarty::singleton()->assign('CaseView_DIR', $CaseView_DIR);
+
+    // Get the path to the extension's templates/CRM/Case/Form directory
+    $extDir = __DIR__ . '/templates' . DIRECTORY_SEPARATOR . 'CRM' . DIRECTORY_SEPARATOR . 'Case' . DIRECTORY_SEPARATOR . 'Form';
+              
+    // Set the relative path to the Activity.tpl file
+    $relativePath = 'CaseTab.tpl';
+
+    // Combine the extension's templates directory path with the relative path
+    $tplName = $extDir . DIRECTORY_SEPARATOR . $relativePath;
   }
 }
 
